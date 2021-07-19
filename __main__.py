@@ -32,7 +32,7 @@ def calculate_efficiency(x, y, z):
 
 
 if __name__ == '__main__':
-    platform_len = 0.508
+    platform_len = 0.518
     d = 0.06
     p_max = 20
     p_n = 15
