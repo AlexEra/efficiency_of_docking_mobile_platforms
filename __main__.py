@@ -32,8 +32,8 @@ def calculate_efficiency(x, y, z):
 
 
 if __name__ == '__main__':
-    platform_len = 0.518
-    d = 0.06
+    platform_len = 0.518  # from datasheet, platform length is 0.508 m
+    d = 0.08
     p_max = 20
     p_n = 15
     p_rel = p_n / p_max
@@ -41,15 +41,19 @@ if __name__ == '__main__':
     x, y, z = catch_a_data('point_1.txt')
     n = calculate_efficiency(x, y, z)
     print(n)
+    print('avg:{}\n'.format(sum(n) / len(n)))
 
     x, y, z = catch_a_data('point_2.txt')
     n = calculate_efficiency(x, y, z)
     print(n)
+    print('avg:{}\n'.format(sum(n) / len(n)))
 
     x, y, z = catch_a_data('point_3.txt')
     n = calculate_efficiency(x, y, z)
     print(n)
+    print('avg:{}\n'.format(sum(n) / len(n)))
 
     x, y, z = catch_a_data('point_4.txt')
     n = calculate_efficiency(x, y, z)
     print(n)
+    print('avg:{}\n'.format(sum(n) / len(n)))
