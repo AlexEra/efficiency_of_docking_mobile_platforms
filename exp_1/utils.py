@@ -118,18 +118,14 @@ def avg(src_lst):
     return lst_avg
 
 
-def graph_gisto(t_s, n):
+def graph_gisto(x, y, x_label, y_label):
     plt.rcParams["font.family"] = "Times New Roman"
-    plt.rcParams["font.size"] = 12
-    t_avg = avg(t_s)
-    n_avg = avg(n)
-    for i in range(len(n_avg)):
-        n_avg[i] = round(n_avg[i] * 100, 2)
+    plt.rcParams["font.size"] = 14
     ax = plt.subplot()
-    ax.bar(range(14), t_avg, 0.35)
-    ax.set_xticks(range(14))
-    ax.set_xticklabels(n_avg)
+    ax.bar(range(len(x)), y, 0.35)
+    ax.set_xticks(range(len(x)))
+    ax.set_xticklabels(x)
     ax.grid()
-    ax.set_ylabel('Время зарядки, ч')
-    ax.set_xlabel('КПД, %')
+    ax.set_xlabel(x_label)
+    ax.set_ylabel(y_label)
     plt.show()
