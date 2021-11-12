@@ -94,7 +94,7 @@ def graph_2d(x, y, x_label, y_label, is_y_eff):
         for i in range(len(y)):
             y[i] = round(y[i] * 100, 2)
     plt.rcParams["font.family"] = "Times New Roman"
-    plt.rcParams["font.size"] = 12
+    plt.rcParams["font.size"] = 14
     plt.plot(x, y)
     # plt.scatter(x, y)
     plt.xlabel(x_label)
@@ -122,10 +122,48 @@ def graph_gisto(x, y, x_label, y_label):
     plt.rcParams["font.family"] = "Times New Roman"
     plt.rcParams["font.size"] = 14
     ax = plt.subplot()
-    ax.bar(range(len(x)), y, 0.35)
+    ax.bar(range(len(x)), y, 0.35, color="w", edgecolor="k")
     ax.set_xticks(range(len(x)))
     ax.set_xticklabels(x)
     ax.grid()
     ax.set_xlabel(x_label)
     ax.set_ylabel(y_label)
     plt.show()
+
+
+def get_std(avg_values, values):
+    tmp = [0 for i in range(14)]
+    for i in range(len(avg_values)):
+        for j in range(len(values[i])):
+            tmp[i] += (avg_values[i] - values[i][j] * 100) ** 2
+        tmp[i] = (tmp[i]) ** (1/2) / 8.485
+    return tmp
+
+
+def d_interval(avg_vls, std_vls):
+    res = list()
+    for i in range(len(avg_vls)):
+        res.append([avg_vls[i] - 1.83311 * std_vls[i] / 3, avg_vls[i] + 1.83311 * std_vls[i] / 3])
+    return res
+
+
+
+def graph_gisto_fig7(x, y, all_y, x_label, y_label):
+    # y - list of means
+    y_std = get_std(y, all_y)
+    intervals = d_interval(y, y_std)
+    plt.rcParams["font.family"] = "Times New Roman"
+    plt.rcParams["font.size"] = 14
+    ax = plt.subplot()
+    ax.bar(range(len(x)), y, 0.35, color="w", edgecolor="k")
+    ax.set_xticks(range(len(x)))
+    ax.set_xticklabels(x)
+    ax.grid()
+    ax.set_xlabel(x_label)
+    ax.set_ylabel(y_label)
+
+    for i_s in range(14):
+        ax.plot([i_s, i_s], intervals[i_s], 'k')
+
+    plt.show()
+    return intervals

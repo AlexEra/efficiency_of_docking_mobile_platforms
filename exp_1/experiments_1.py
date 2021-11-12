@@ -1,4 +1,4 @@
-from utils import catch_a_data, calculate_efficiency, angles_lists, graph_3d, graph_2d, time_charging, graph_gisto, avg
+from utils import *
 
 """
 TODO:
@@ -81,7 +81,7 @@ if __name__ == '__main__':
 
     # graph_3d(x, y, z, 'L, м', 'H, м')
 
-    """
+    """"""
     t_avg = avg(time_charging(z, p_max))
     b_avg = avg(b_0 + b_1 + b_2 + b_3 + b_4 + b_5 + b_6 + b_7 + b_8 + b_9 + b_10 + b_11 + b_12 + b_13)
     g_avg = avg(g_0 + g_1 + g_2 + g_3 + g_4 + g_5 + g_6 + g_7 + g_8 + g_9 + g_10 + g_11 + g_12 + g_13)
@@ -94,27 +94,28 @@ if __name__ == '__main__':
     b_g_lst = list()
     for i, j in zip(b_avg, g_avg):
         b_g_lst.append([i, j])
-    # graph_gisto(b_g_lst, n_avg, r'[$\beta, \gamma$], град', 'КПД, %')
-    # graph_gisto(n_avg, t_avg, 'КПД, %', 'Время зарядки, ч')
-    # graph_gisto(b_avg, n_avg, r'$\beta, град$', 'КПД, %')
-    # graph_gisto(g_avg, n_avg, r'$\gamma, град$', 'КПД, %')
-    # graph_gisto(ar_angle_avg, n_avg, 'Угол наклона поверхности, град', 'КПД, %')
-    # graph_gisto(b_avg, t_avg, r'$\beta, град$', 'Время зарядки, ч')
-    """
+    # n_all = [n_0, n_1, n_2, n_3, n_4, n_5, n_6, n_7, n_8, n_9, n_10, n_11, n_12, n_13]
+    # res = graph_gisto_fig7(b_g_lst, n_avg, n_all, r'[$\beta, \gamma$], град', 'Эффективность, %')  # fig. 7
+    graph_gisto(n_avg, t_avg, 'Эффективность, %', 'Время подзарядки, ч')
+    # graph_gisto(b_avg, n_avg, r'$\beta, град$', 'Эффективность, %')
+    # graph_gisto(g_avg, n_avg, r'$\gamma, град$', 'Эффективность, %')
+    # graph_gisto(ar_angle_avg, n_avg, 'Угол наклона поверхности, град', 'Эффективность, %')
+    # graph_gisto(b_avg, t_avg, r'$\beta, град$', 'Время подзарядки, ч')
+
 
     """
     bb = avg(b_0 + b_1 + b_2 + b_3 + b_4 + b_5 + b_6 + b_7 + b_8 + b_9 + b_10 + b_11 + b_12 + b_13)
     gg = avg(g_0 + g_1 + g_2 + g_3 + g_4 + g_5 + g_6 + g_7 + g_8 + g_9 + g_10 + g_11 + g_12 + g_13)
     n_avg = avg(z)
-    graph_2d(bb, n_avg, r'$\beta$, град', 'КПД, %', True)
-    # graph_2d(gg, n_avg, r'$\gamma$, град', 'КПД, %', True)"""
+    graph_2d(bb, n_avg, r'$\beta$, град', 'Эффективность, %', True)
+    # graph_2d(gg, n_avg, r'$\gamma$, град', 'Эффективность, %', True)"""
 
     """t = avg(time_charging(z, p_max))
     graph_2d(bb, t, r'$\beta$, град', 'Время заряда, ч', False)
     graph_2d(gg, t, r'$\beta$, град', 'Время заряда, ч', False)"""
 
     """area_angle = [6.59, 10.01, 12.05, 18.77, 14.88, 14.53, 17.08, 0, 1.12, 6.83, 12.65, 17.42, 19.33, 19.99]
-    graph_2d(area_angle, n_avg, 'Угол наклона поверхности, град', 'КПД, %', True)
+    graph_2d(area_angle, n_avg, 'Угол наклона поверхности, град', 'Эффективность, %', True)
     """
 
     """
